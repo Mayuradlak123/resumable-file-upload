@@ -1,0 +1,65 @@
+[project]
+name = "resumable-upload"
+version = "0.1.0"
+authors = [
+  { name = "Mayur Adlak", email = "mayuradlak030@gmail.com" },
+]
+description = "Chunked, resumable file uploads for Python backends — resume after failure without re-sending what already arrived."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+keywords = ["upload", "resumable", "chunked", "file-upload", "fastapi", "storage"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+# The package itself is standard-library only; that is a feature, not an oversight.
+dependencies = []
+
+[project.optional-dependencies]
+demo = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Mayuradlak123/resumable-upload"
+"Bug Tracker" = "https://github.com/Mayuradlak123/resumable-upload/issues"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/resumable_upload"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "tests/", "examples/", "README.md", "LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-q"
+# Lets the API tests import the FastAPI demo as examples.fastapi_demo.main
+pythonpath = ["."]

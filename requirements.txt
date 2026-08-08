@@ -1,0 +1,11 @@
+# The resumable-upload package itself has NO runtime dependencies.
+# This file exists for pip-only workflows that want to run the FastAPI demo;
+# `uv sync` (using pyproject.toml) is the supported path.
+#
+#     pip install -r requirements.txt
+
+-e .
+
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-dotenv>=1.0
