@@ -218,13 +218,32 @@ async def health():
     return {"status": "ok", "upload_dir": str(UPLOAD_DIR)}
 
 
+# The browser client is a local testing aid and is not tracked in the repo, so
+# everything below treats it as optional: the API must run without it.
+STATIC_DIR = BASE_DIR / "static"
+INDEX_FILE = STATIC_DIR / "upload.html"
+
+
 @app.get("/", include_in_schema=False)
 async def index():
-    """The browser client used to exercise the upload flow."""
-    return FileResponse(BASE_DIR / "static" / "upload.html", media_type="text/html")
+    """The browser client used to exercise the upload flow, when present."""
+    if not INDEX_FILE.is_file():
+        return JSONResponse(
+            status_code=404,
+            content={
+                "error": "DemoClientNotInstalled",
+                "detail": (
+                    "No static/upload.html in this checkout. The HTTP API is "
+                    "unaffected — see /docs, or examples/fastapi_demo/"
+                    "requirements.md for the endpoint reference."
+                ),
+            },
+        )
+    return FileResponse(INDEX_FILE, media_type="text/html")
 
 
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+if STATIC_DIR.is_dir():
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 if __name__ == "__main__":

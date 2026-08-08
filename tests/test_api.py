@@ -178,7 +178,14 @@ async def test_download_before_completion_is_409(client):
     assert response.status_code == 409
 
 
-async def test_index_page_is_served(client):
+async def test_index_serves_the_client_or_says_it_is_absent(client, demo):
+    """The browser client is an untracked local aid, so both states are valid —
+    what must never happen is the API failing to start without it."""
     response = await client.get("/")
-    assert response.status_code == 200
-    assert "Resumable Upload Demo" in response.text
+
+    if demo.INDEX_FILE.is_file():
+        assert response.status_code == 200
+        assert "Resumable Upload Demo" in response.text
+    else:
+        assert response.status_code == 404
+        assert response.json()["error"] == "DemoClientNotInstalled"

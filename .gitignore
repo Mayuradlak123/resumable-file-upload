@@ -33,6 +33,10 @@ htmlcov/
 uploads/
 examples/fastapi_demo/uploads/
 
+# Browser client: a local testing aid, kept out of the repo on purpose.
+# The API runs without it; GET / reports its absence instead of failing.
+examples/fastapi_demo/static/
+
 # Logs
 logs/
 *.log
