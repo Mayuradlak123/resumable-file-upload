@@ -51,4 +51,4 @@ cloud storage backends. The per-upload lock is in-process, so it serialises
 concurrent chunks within one server process, not across a cluster. Chunks are
 buffered in memory rather than streamed, which is what `max_chunk_size` bounds.
 
-[0.1.0]: https://github.com/Mayuradlak123/resumable-upload/releases/tag/v0.1.0
+[0.1.0]: https://github.com/Mayuradlak123/resumable-file-upload/releases/tag/v0.1.0
