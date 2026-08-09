@@ -474,7 +474,7 @@ wheels = [
 ]
 
 [[package]]
-name = "resumable-upload"
+name = "resumable-file-upload"
 version = "0.1.0"
 source = { editable = "." }
 

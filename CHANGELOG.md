@@ -37,6 +37,9 @@ after failure.**
 
 ### Notes
 
+- Published as **`resumable-file-upload`** on PyPI; the import name is
+  `resumable_upload`. The shorter distribution name was already claimed by an
+  unrelated project.
 - The package has **zero runtime dependencies** — standard library only.
   FastAPI and uvicorn are needed for the demo, not the library.
 - Requires Python 3.10+.

@@ -1,5 +1,7 @@
 [project]
-name = "resumable-upload"
+# Distribution name on PyPI. The import name stays `resumable_upload`;
+# plain `resumable-upload` was already taken by an unrelated TUS library.
+name = "resumable-file-upload"
 version = "0.1.0"
 authors = [
   { name = "Mayur Adlak", email = "mayuradlak030@gmail.com" },

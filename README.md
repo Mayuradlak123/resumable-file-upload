@@ -74,13 +74,17 @@ uploads in flight.
 ## Install
 
 ```bash
-uv sync
+pip install resumable-file-upload
 ```
 
-Or with pip:
+> The distribution is `resumable-file-upload`; the import is `resumable_upload`.
+> They differ because the shorter name was already taken on PyPI by an
+> unrelated project.
+
+Working on the source instead:
 
 ```bash
-pip install -r requirements.txt
+uv sync                          # or: pip install -r requirements.txt
 ```
 
 The library has zero runtime dependencies. FastAPI and uvicorn are only needed
