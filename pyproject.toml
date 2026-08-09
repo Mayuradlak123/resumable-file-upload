@@ -38,7 +38,7 @@ demo = [
 [project.urls]
 "Homepage" = "https://github.com/Mayuradlak123/resumable-file-upload"
 "Bug Tracker" = "https://github.com/Mayuradlak123/resumable-file-upload/issues"
-"Changelog" = "https://github.com/Mayuradlak123/resumable-file-upload/blob/main/CHANGELOG.md"
+"Changelog" = "https://github.com/Mayuradlak123/resumable-file-upload/releases"
 
 [dependency-groups]
 dev = [
